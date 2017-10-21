@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Shareholder address:</strong>
+  <%= @term_agreement.shareholder_address %>
+</p>
+
+<p>
+  <strong>Term accepted:</strong>
+  <%= @term_agreement.term_accepted %>
+</p>
+
+<p>
+  <strong>Terms description:</strong>
+  <%= @term_agreement.terms_description %>
+</p>
+
+<%= link_to 'Edit', edit_term_agreement_path(@term_agreement) %> |
+<%= link_to 'Back', term_agreements_path %>
