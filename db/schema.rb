@@ -10,6 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20171021022035) do
+
+  create_table "term_agreements", force: :cascade do |t|
+    t.string "shareholder_address"
+    t.boolean "term_accepted"
+    t.text "terms_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
