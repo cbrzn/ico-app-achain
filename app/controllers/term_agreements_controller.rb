@@ -14,7 +14,7 @@ class TermAgreementsController < ApplicationController
 
   # GET /term_agreements/new
   def new
-    @term_agreement = TermAgreement.new
+    @term_agreement = TermAgreement.find(params[:id]) || TermAgreement.new
   end
 
   # GET /term_agreements/1/edit
@@ -24,10 +24,9 @@ class TermAgreementsController < ApplicationController
   # POST /term_agreements
   # POST /term_agreements.json
   def create
-    @term_agreement = TermAgreement.new(term_agreement_params)
+    @term_agreement = TermAgreement.existing_account(:shareholder_address)
 
     respond_to do |format|
-      if @term_agreement.save
         format.html { redirect_to @term_agreement, notice: 'Term agreement was successfully created.' }
         format.json { render :show, status: :created, location: @term_agreement }
       else
