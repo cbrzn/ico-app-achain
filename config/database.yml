@@ -6,14 +6,14 @@ default: &default
 
 development:
   <<: *default
-  database: ico-app-ac
+  database: ico-app-ac-cesar
 
 test:
   <<: *default
-  database: ico-app-ac_test
+  database: ico-app-ac-cesar_test
 
 production:
   <<: *default
-  database: ico-app-ac
-  username: ico-app-ac
-  password: <%= ENV['ICO-APP-AC_DATABASE_PASSWORD'] %>
+  database: ico-app-ac-cesar
+  username: ico-app-ac-cesar
+  password: <%= ENV['ICO-APP-AC-CESAR_DATABASE_PASSWORD'] %>

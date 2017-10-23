@@ -24,11 +24,14 @@ class TermAgreementsController < ApplicationController
   # POST /term_agreements
   # POST /term_agreements.json
   def create
-    @term_agreement = TermAgreement.existing_account(:shareholder_address)
+    @term_agreement = TermAgreement.existing_account(term_agreement_params[:shareholder_address])
 
     respond_to do |format|
       if @term_agreement.save
         format.html { redirect_to @term_agreement, notice: 'Term agreement was successfully created.' }
+        format.json { render :show, status: :created, location: @term_agreement }
+      elsif @term_agreement.update(term_agreement_params)
+        format.html { redirect_to @term_agreement, notice: 'Term agreement was successfully updated.' }
         format.json { render :show, status: :created, location: @term_agreement }
       else
         format.html { render :new }

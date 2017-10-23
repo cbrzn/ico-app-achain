@@ -8,12 +8,15 @@ class TermAgreement < ApplicationRecord
       if self.find_by_shareholder_address( address )
        add = self.find_by_shareholder_address( address )
        add.adding_one
-       add.save!
+       c = self.find_by_shareholder_address(add.shareholder_address)
       else
        add = self.create!(shareholder_address: address, term_accepted: true)
-       add.save!
       end
     end
+  end
+
+  def self.address_obj(address)
+    add = TermAgreement.existing_account(address)
   end
 
   def adding_one
